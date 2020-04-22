@@ -34,6 +34,19 @@ router.post('/', restricted, (req, res) => {
     });
 });
 
+router.post('/update', restricted, (req, res) => {
+  const userId = req.jwt.user_id;
+  const todosArr = req.body.todos;
+
+  Todos.deleteCompletedTodos(todosArr, userId)
+    .then((todos) => {
+      res.status(200).json({ todos });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: 'Failed to update todos.' });
+    });
+});
+
 router.delete('/:id', restricted, (req, res) => {
   const todoId = req.params.id;
   const userId = req.jwt.user_id;

@@ -12,7 +12,7 @@ exports.up = function (knex) {
       .onUpdate('CASCADE');
 
     todos.string('text').notNullable;
-    todos.boolean('is_complete').notNullable().defaultTo(0);
+    todos.boolean('is_complete').defaultTo(0);
   });
 };
 
