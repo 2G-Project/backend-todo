@@ -40,9 +40,11 @@ router.post('/update', restricted, (req, res) => {
 
   Todos.deleteCompletedTodos(todosArr, userId)
     .then((todos) => {
+      console.log(todos);
       res.status(200).json({ todos });
     })
     .catch((err) => {
+      console.log(err);
       res.status(500).json({ message: 'Failed to update todos.' });
     });
 });
