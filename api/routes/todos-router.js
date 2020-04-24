@@ -40,7 +40,6 @@ router.post('/update', restricted, (req, res) => {
 
   Todos.deleteCompletedTodos(todosArr, userId)
     .then((todos) => {
-      console.log(todos);
       res.status(200).json({ todos });
     })
     .catch((err) => {
